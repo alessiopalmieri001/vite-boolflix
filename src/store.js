@@ -5,4 +5,5 @@ export const store = reactive ({
     searchFilm:'',
     //array vuoto dove finiranno le richieste dell'utente tramite input di testo
     films: [],
+    serieTv:[],
 });

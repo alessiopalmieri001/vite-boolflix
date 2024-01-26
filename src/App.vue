@@ -29,9 +29,26 @@
                         })
                         //gestione api ai
                         .then((response) => {
-                            console.log(response.data.results);
+                            console.log('film',response.data.results);
                             this.store.films = response.data.results;
                             console.log(this.store.films)
+                        });
+
+                        //chiamata serietv
+                        axios
+                            //richiesta epi ai
+                            .get('https://api.themoviedb.org/3/search/tv',{
+                                //parametri 
+                                params: {
+                                    api_key:'234ca3fbd542010fa1945add43865825',
+                                    query: this.store.searchFilm
+                                }
+                            })
+                            //gestione api ai
+                            .then((response) => {
+                                console.log('serieTV',response.data.results);
+                                this.store.serieTv = response.data.results;
+                                console.log(this.store.serieTv)
                         });
                 }
             }

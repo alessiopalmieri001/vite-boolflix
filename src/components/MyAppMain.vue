@@ -1,10 +1,14 @@
 <script >
+    import singolCard from './singolCard.vue';
     import {store} from '../store';
     export default{
         data() {
             return {
                 store
             };
+        },
+        components:{
+            singolCard
         },
         methods: {
             flags(lang){
@@ -28,23 +32,34 @@
 <template>
     <main>
         <div>
+            <h2>
+                film
+            </h2>
             <ul>
                 <li v-for="(film, i) in store.films" :key="i">
-                    <div>
-                        titolo:{{ film.title }}
-                    </div>
-                    <div>
-                        titolo originale:{{ film.original_title }}
-                    </div>
-                    <div>
-                        lingua:{{ film.original_language }}
-                    </div>
-                    <div>
-                        <img :src="flags(film.original_language)" :alt="film.original_title">
-                    </div>
-                    <div>
-                        voto:{{ film.vote_average }}
-                    </div>
+                    <singolCard 
+                        :titleName="film.title"
+                        :originalName="film.original_title"
+                        :originalLanguage="film.original_language"
+                        :valutazione="film.vote_average"
+                    />
+                    <hr>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div>
+            <h2>
+                serietv
+            </h2>
+            <ul>
+                <li v-for="(serie, y) in store.serieTv" :key="y">
+                    <singolCard 
+                        :titleName="serie.name"
+                        :originalName="serie.original_name"
+                        :originalLanguage="serie.original_language"
+                        :valutazione="serie.vote_average"
+                    />
                     <hr>
                 </li>
             </ul>
