@@ -3,13 +3,12 @@
     import MyAppMain from './components/MyAppMain.vue';
     import MyAppFooter from './components/MyAppFooter.vue';
     import axios from 'axios';
+    import {store} from './store';
+
         export default{
             data() {
                 return {
-                    //input di testo
-                    searchFilm:'',
-                    //array vuoto dove finiranno le richieste dell'utente tramite input di testo
-                    films: [],
+                    store,
                 };
             },
             components: {
@@ -25,14 +24,14 @@
                             //parametri 
                             params: {
                                 api_key:'234ca3fbd542010fa1945add43865825',
-                                query: this.searchFilm
+                                query: this.store.searchFilm
                             }
                         })
                         //gestione api ai
                         .then((response) => {
                             console.log(response.data.results);
-                            this.films = response.data.results;
-                            console.log(this.films)
+                            this.store.films = response.data.results;
+                            console.log(this.store.films)
                         });
                 }
             }
@@ -40,48 +39,19 @@
 </script>
 
 <template>
-    <header>
-        <input v-model="searchFilm" type="text" placeholder="inserisci qui il film">
-        <button @click="search()">
-            clicca qui
-        </button>
-    </header>
-    <main>
-        <div>
-            <ul>
-                <li v-for="(film, i) in films" :key="i">
-                    <div>
-                        titolo:{{ film.title }}
-                    </div>
-                    <div>
-                        titolo originale:{{ film.original_title }}
-                    </div>
-                    <div>
-                        divngua:{{ film.original_language }}
-                    </div>
-                    <div>
-                        voto:{{ film.vote_average }}
-                    </div>
-                    <hr>
-                </li>
-            </ul>
-        </div>
-    </main>
-                    
-                    
 
+    <MyAppHeader @searchBar="search()"/>
 
-
-
-    <!-- <h1>
-        Mia app
-    </h1>
-    <MyAppHeader />
     <MyAppMain />
-    <MyAppFooter /> -->
+
 </template>
 
 <style lang="scss">
-@use "assets/scss/partials/reset.scss" as *;
-@use "assets/scss/main.scss" as *;
+    @use "assets/scss/partials/reset.scss" as *;
+    @use "assets/scss/main.scss" as *;
 </style>
+
+
+
+
+

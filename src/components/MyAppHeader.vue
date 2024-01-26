@@ -1,8 +1,10 @@
 <script >
+    import {store} from '../store';
+
     export default{
         data() {
             return {
-
+                store
             };
         },
         methods: {
@@ -13,7 +15,10 @@
 
 <template>
     <header>
-        HEADER
+        <input v-model="store.searchFilm" type="text" placeholder="inserisci qui il film">
+        <button @click="$emit('searchBar')">
+            clicca qui
+        </button>
     </header>
 </template>
 
