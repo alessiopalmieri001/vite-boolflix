@@ -7,7 +7,20 @@
             };
         },
         methods: {
-
+            flags(lang){
+                let finalFlags = '';
+                if (lang == 'en'){
+                    finalFlags = 'https://flagicons.lipis.dev/flags/4x3/gb.svg';
+                }
+                else if (lang == 'ja'){
+                    finalFlags = 'https://flagicons.lipis.dev/flags/4x3/jp.svg';
+                }
+                else{
+                    finalFlags = 'https://flagicons.lipis.dev/flags/4x3/' +  lang +'.svg';
+                }
+                
+                return finalFlags;
+            }
         }
     }
 </script>
@@ -24,7 +37,10 @@
                         titolo originale:{{ film.original_title }}
                     </div>
                     <div>
-                        divngua:{{ film.original_language }}
+                        lingua:{{ film.original_language }}
+                    </div>
+                    <div>
+                        <img :src="flags(film.original_language)" :alt="film.original_title">
                     </div>
                     <div>
                         voto:{{ film.vote_average }}
@@ -37,6 +53,8 @@
 </template>
 
 <style lang="scss" scoped>
-
+    img{
+        height: 2rem;
+    }
 </style>
 
