@@ -6,7 +6,9 @@
         export default{
             data() {
                 return {
+                    //input di testo
                     searchFilm:'',
+                    //array vuoto dove finiranno le richieste dell'utente tramite input di testo
                     films: [],
                 };
             },
@@ -18,12 +20,15 @@
             methods: {
                 search() {
                     axios
+                        //richiesta epi ai
                         .get('https://api.themoviedb.org/3/search/movie',{
+                            //parametri 
                             params: {
                                 api_key:'234ca3fbd542010fa1945add43865825',
                                 query: this.searchFilm
                             }
                         })
+                        //gestione api ai
                         .then((response) => {
                             console.log(response.data.results);
                             this.films = response.data.results;
@@ -45,11 +50,25 @@
         <div>
             <ul>
                 <li v-for="(film, i) in films" :key="i">
-                    {{ film }}
+                    <div>
+                        titolo:{{ film.title }}
+                    </div>
+                    <div>
+                        titolo originale:{{ film.original_title }}
+                    </div>
+                    <div>
+                        divngua:{{ film.original_language }}
+                    </div>
+                    <div>
+                        voto:{{ film.vote_average }}
+                    </div>
+                    <hr>
                 </li>
             </ul>
         </div>
     </main>
+                    
+                    
 
 
 
