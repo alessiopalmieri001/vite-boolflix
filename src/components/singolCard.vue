@@ -10,6 +10,7 @@
             originalName: String,
             originalLanguage:String,
             valutazione: Number,
+            poster: String, 
         },
         methods: {
             flags(lang){
@@ -25,6 +26,9 @@
                 }
                 
                 return finalFlags;
+            },
+            starVoted(){
+                return Math.ceil(this.valutazione / 2);
             }
         }
     }
@@ -32,6 +36,9 @@
 
 <template>
     <div>
+        <div>
+            <img class="img-poster" :src="'https://image.tmdb.org/t/p/w185' + poster" :alt="titleName">
+        </div>
         <div>
             {{ titleName }}
         </div>
@@ -45,8 +52,15 @@
             <img :src="flags(originalLanguage)" :alt="titleName">
         </div>
         <div>
-            {{ valutazione }}
+            {{ starVoted() }}
         </div>
+        <div>
+            <i v-for="i in starVoted()" :key="i" class="fa-solid fa-star"></i>
+            <i v-for="j in (5 - starVoted())" :key="j" class="fa-regular fa-star"></i>
+
+        </div>
+        
+        
     </div>
 </template>
 
@@ -54,5 +68,8 @@
     img{
         height: 2rem;
     }
+    .img-poster{
+        height: 150px;
+    }           
 </style>
 

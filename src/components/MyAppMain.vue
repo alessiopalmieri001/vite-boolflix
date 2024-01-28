@@ -42,6 +42,7 @@
                         :originalName="film.original_title"
                         :originalLanguage="film.original_language"
                         :valutazione="film.vote_average"
+                        :poster="film.poster_path"
                     />
                     <hr>
                 </li>
@@ -59,6 +60,7 @@
                         :originalName="serie.original_name"
                         :originalLanguage="serie.original_language"
                         :valutazione="serie.vote_average"
+                        :poster="serie.poster_path"
                     />
                     <hr>
                 </li>
