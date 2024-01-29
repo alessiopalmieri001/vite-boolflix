@@ -82,7 +82,7 @@
             flex-flow: row nowrap;
             overflow-y: auto;
             div{
-                width: 500px;
+                width: 342px;
             }
         }
     }

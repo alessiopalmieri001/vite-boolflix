@@ -62,14 +62,22 @@
         
         
     </div>
+
+    
 </template>
+                
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/variables.scss' as *;
+
     img{
         height: 2rem;
     }
     .img-poster{
         height: 150px;
-    }           
+    }
+    
+    
+    
 </style>
 
