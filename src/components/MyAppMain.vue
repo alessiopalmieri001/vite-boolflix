@@ -31,12 +31,12 @@
 
 <template>
     <main>
-        <div>
-            <h2>
-                film
-            </h2>
-            <ul>
-                <li v-for="(film, i) in store.films" :key="i">
+        <h2>
+            film
+        </h2>
+        <div class="filmSerie">
+            <section>
+                <div v-for="(film, i) in store.films" :key="i">
                     <singolCard 
                         :titleName="film.title"
                         :originalName="film.original_title"
@@ -44,17 +44,17 @@
                         :valutazione="film.vote_average"
                         :poster="film.poster_path"
                     />
-                    <hr>
-                </li>
-            </ul>
+                    
+                </div>
+            </section>
         </div>
-        <hr>
-        <div>
-            <h2>
-                serietv
-            </h2>
-            <ul>
-                <li v-for="(serie, y) in store.serieTv" :key="y">
+        
+        <h2>
+            serietv
+        </h2>
+        <div class="filmSerie">
+            <section>
+                <div v-for="(serie, y) in store.serieTv" :key="y">
                     <singolCard 
                         :titleName="serie.name"
                         :originalName="serie.original_name"
@@ -62,9 +62,9 @@
                         :valutazione="serie.vote_average"
                         :poster="serie.poster_path"
                     />
-                    <hr>
-                </li>
-            </ul>
+                    
+                </div>
+            </section>
         </div>
     </main>
 </template>
@@ -72,6 +72,19 @@
 <style lang="scss" scoped>
     img{
         height: 2rem;
+    }
+    .filmSerie{
+        height: 40vh;
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row nowrap;
+            overflow-y: auto;
+            div{
+                width: 500px;
+            }
+        }
     }
 </style>
 

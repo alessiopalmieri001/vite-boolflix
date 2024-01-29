@@ -37,7 +37,7 @@
 <template>
     <div>
         <div>
-            <img class="img-poster" :src="'https://image.tmdb.org/t/p/w185' + poster" :alt="titleName">
+            <img class="img-poster" :src="'https://image.tmdb.org/t/p/w342' + poster" :alt="titleName">
         </div>
         <div>
             {{ titleName }}
